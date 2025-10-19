@@ -16,4 +16,19 @@ const getAll = async (req, res, next) => {
   res.json(subjects);
 };
 
-module.exports = { getAll };
+const getById = async (req, res, next) => {
+    const subjectId = new ObjectId(req.params.id);
+    const result = mongoDb
+        .getDb()
+        .db("photography_gear")
+        .collection("subject")
+        .find({ _id: subjectId });
+    const subject = await result.toArray();
+    res.setHeader("content_type", "application/json");
+    res.status(200).json(subject[0]);
+};
+
+module.exports = { 
+    getAll,
+    getById
+};

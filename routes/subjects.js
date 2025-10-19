@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const subjectsController = require("../controllers/subjects");
 
 // ============================================
 // GET routes
 // ============================================
-router.get("/", require("../controllers/subjects").getAll);
+router.get("/", subjectsController.getAll);
+router.get("/:id", subjectsController.getById);
 
 module.exports = router;
