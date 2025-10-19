@@ -8,4 +8,9 @@ const lensesController = require("../controllers/lenses");
 router.get("/", lensesController.getAll);
 router.get("/:id", lensesController.getById);
 
+// ============================================
+// POST route
+// ============================================
+router.post("/", lensesController.insertLens);
+
 module.exports = router;

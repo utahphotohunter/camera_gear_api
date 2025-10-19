@@ -1,0 +1,25 @@
+// LOCALHOST
+@url = http://localhost:5500/cameras
+
+### GET all cameras
+GET {{url}}
+
+### GET single camera by id
+GET {{url}}/68f46d1b75e6203cb6c2bf56
+
+### POST new camera
+POST {{url}} HTTP/1.1
+content-type: application/json
+
+{
+    "model": "R5",
+    "brand": "Canon",
+    "mirrorless": "yes",
+    "sensor": "full",
+    "mobility": "medium",
+    "environment": "rugged",
+    "weight": "medium",
+    "size": "medium",
+    "battery": "long",
+    "speed": "fast"
+}
