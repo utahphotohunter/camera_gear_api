@@ -2,8 +2,9 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const port = process.env.PORT || 5500;
-const mongoDB = require("./database/connection");
+const mongoDb = require("./database/connection");
 const bodyParser = require("body-parser");
+const routes = require("./routes");
 
 app
   .use(cors())
@@ -12,13 +13,13 @@ app
     res.setHeader("Access-Control-Allow-Origin", "*");
     next();
   })
-  .use("/", require("./routes"));
+  .use("/", routes);
 
-mongoDB.initDb((err, mongoDB) => {
+mongoDb.initDb((err, mongoDb) => {
   if (err) {
     console.log(err);
   } else {
     app.listen(port);
-    console.log(`Server listening on https://localhost:${port}`);
+    console.log(`Server listening on port ${port}`);
   }
 });
