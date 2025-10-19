@@ -5,8 +5,8 @@ const doc = {
     title: "Camera Gear API",
     description: "API for choosing photography equipment.",
   },
-  host: "localhost:5500",
-//   host: "cse341-3qth.onrender.com",
+  // host: "localhost:5500",
+  host: "camera-gear-api.onrender.com",
   schemes: ["https"],
 };
 
