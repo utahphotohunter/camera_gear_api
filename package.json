@@ -1,0 +1,30 @@
+{
+  "name": "camera_gear_api",
+  "version": "1.0.0",
+  "description": "API for choosing photography equipment.",
+  "homepage": "https://github.com/utahphotohunter/camera_gear_api#readme",
+  "bugs": {
+    "url": "https://github.com/utahphotohunter/camera_gear_api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/utahphotohunter/camera_gear_api.git"
+  },
+  "license": "ISC",
+  "author": "Mitchel Hunter",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongodb": "^6.20.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
