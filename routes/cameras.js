@@ -8,4 +8,9 @@ const camerasController = require("../controllers/cameras");
 router.get("/", camerasController.getAll);
 router.get("/:id", camerasController.getById);
 
+// ============================================
+// POST route
+// ============================================
+router.post("/", camerasController.insertCamera);
+
 module.exports = router;

@@ -8,4 +8,9 @@ const subjectsController = require("../controllers/subjects");
 router.get("/", subjectsController.getAll);
 router.get("/:id", subjectsController.getById);
 
+// ============================================
+// POST route
+// ============================================
+router.post("/", subjectsController.insertSubject);
+
 module.exports = router;
