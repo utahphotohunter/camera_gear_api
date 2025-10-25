@@ -56,9 +56,58 @@ const insertSubject = async (req, res) => {
   }
 };
 
+// ==============================================
+// PUT logic
+// ==============================================
+const updateSubject = async (req, res) => {
+  const subjectId = new ObjectId(req.params.id);
+  const subject = {
+    subject: req.body.subject,
+    time: req.body.time,
+    mirrorless: req.body.mirrorless,
+    sensor: req.body.sensor,
+    environment: req.body.environment,
+    duration: req.body.duration,
+    speed: req.body.speed,
+    view: req.body.view,
+  };
+  const response = await mongoDb
+    .getDb()
+    .db("photography_gear")
+    .collection("subject")
+    .replaceOne({ _id: subjectId }, subject);
+  if (response.modifiedCount > 0) {
+    res.status(204).send();
+  } else {
+    res
+      .status(500)
+      .json(response.error || "Some error occured while updating the subject.");
+  }
+};
+
+// ==============================================
+// DELETE logic
+// ==============================================
+const deleteSubject = async (req, res) => {
+  const subjectId = new ObjectId(req.params.id);
+  const response = await mongoDb
+    .getDb()
+    .db("photography_gear")
+    .collection("subject")
+    .deleteOne({ _id: subjectId }, true);
+  if (response.deletedCount > 0) {
+    res.status(204).send();
+  } else {
+    res
+      .status(500)
+      .json(response.error || "Some error occured while deleting the subject.");
+  }
+};
+
 module.exports = {
   getAll,
   getById,
   insertSubject,
-  
+  updateSubject,
+  deleteSubject,
 };
