@@ -104,7 +104,7 @@ const deleteCamera = async (req, res) => {
   } else {
     res
       .status(500)
-      .json(response.error || "Some error occured while deleting the contact.");
+      .json(response.error || "Some error occured while deleting the camera.");
   }
 };
 

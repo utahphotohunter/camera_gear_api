@@ -55,8 +55,57 @@ const insertLens = async (req, res) => {
   }
 };
 
+// ==============================================
+// PUT logic
+// ==============================================
+const updateLens = async (req, res) => {
+  const lensId = new ObjectId(req.params.id);
+  const lens = {
+    medel: req.body.model,
+    micro: req.body.micro,
+    mobility: req.body.mobility,
+    environment: req.body.environment,
+    weight: req.body.weight,
+    size: req.body.size,
+    zoom: req.body.zoom,
+  };
+  const response = await mongoDb
+    .getDb()
+    .db("photography_gear")
+    .collection("lens")
+    .replaceOne({ _id: lensId }, lens);
+  if (response.modifiedCount > 0) {
+    res.status(204).send();
+  } else {
+    res
+      .status(500)
+      .json(response.error || "Some error occured while updating the lens.");
+  }
+};
+
+// ==============================================
+// DELETE logic
+// ==============================================
+const deleteLens = async (req, res) => {
+  const lensId = new ObjectId(req.params.id);
+  const response = mongoDb
+    .getDb()
+    .db("photography_gear")
+    .collection("lens")
+    .deleteOne({ _id: lensId }, true);
+  if (response.deletedCount > 0) {
+    res.status(204).send();
+  } else {
+    res
+      .status(500)
+      .json(response.error || "Some error occured while deleting the lens.");
+  }
+};
+
 module.exports = {
   getAll,
   getById,
   insertLens,
+  updateLens,
+  deleteLens,
 };

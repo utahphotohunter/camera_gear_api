@@ -13,4 +13,14 @@ router.get("/:id", lensesController.getById);
 // ============================================
 router.post("/", lensesController.insertLens);
 
+// ============================================
+// PUT route
+// ============================================
+router.put("/:id", lensesController.updateLens);
+
+// ============================================
+// DELETE route
+// ============================================
+router.delete("/:id", lensesController.deleteLens);
+
 module.exports = router;
