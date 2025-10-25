@@ -13,4 +13,14 @@ router.get("/:id", camerasController.getById);
 // ============================================
 router.post("/", camerasController.insertCamera);
 
+// ============================================
+// PUT route
+// ============================================
+router.put("/:id", camerasController.updateCamera);
+
+// ============================================
+// DELETE route
+// ============================================
+router.delete("/:id", camerasController.deleteCamera);
+
 module.exports = router;

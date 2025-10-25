@@ -54,7 +54,57 @@ const insertCamera = async (req, res) => {
   } else {
     res
       .status(500)
-      .json(response.error || "Some error occured while inserting the contact");
+      .json(response.error || "Some error occured while inserting the camera");
+  }
+};
+
+// ==============================================
+// PUT logic
+// ==============================================
+const updateCamera = async (req, res) => {
+  const cameraId = new ObjectId(req.params.id);
+  const camera = {
+    model: req.body.model,
+    brand: req.body.brand,
+    mirrorless: req.body.mirrorless,
+    sensor: req.body.sensor,
+    mobility: req.body.mobility,
+    environment: req.body.environment,
+    weight: req.body.weight,
+    size: req.body.size,
+    batter: req.body.battery,
+    speed: req.body.speed,
+  };
+  const response = await mongoDb
+    .getDb()
+    .db("photography_gear")
+    .collection("camera")
+    .replaceOne({ _id: cameraId }, camera);
+  if (response.modifiedCount > 0) {
+    res.status(204).send();
+  } else {
+    res
+      .status(500)
+      .json(response.error || "Some error occured while updating the camera.");
+  }
+};
+
+// ==============================================
+// DELETE logic
+// ==============================================
+const deleteCamera = async (req, res) => {
+  const cameraId = new ObjectId(req.params.id);
+  const response = mongoDb
+    .getDb()
+    .db("photography_gear")
+    .collection("camera")
+    .deleteOne({ _id: cameraId }, true);
+  if (response.deletedCount > 0) {
+    res.status(204).send();
+  } else {
+    res
+      .status(500)
+      .json(response.error || "Some error occured while deleting the contact.");
   }
 };
 
@@ -62,4 +112,6 @@ module.exports = {
   getAll,
   getById,
   insertCamera,
+  updateCamera,
+  deleteCamera,
 };
