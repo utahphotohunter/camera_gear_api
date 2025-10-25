@@ -13,4 +13,14 @@ router.get("/:id", subjectsController.getById);
 // ============================================
 router.post("/", subjectsController.insertSubject);
 
+// ============================================
+// PUT route
+// ============================================
+router.put("/:id", subjectsController.updateSubject);
+
+// ============================================
+// DELETE route
+// ============================================
+router.delete("/:id", subjectsController.deleteSubject);
+
 module.exports = router;
