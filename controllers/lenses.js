@@ -88,7 +88,7 @@ const updateLens = async (req, res) => {
 // ==============================================
 const deleteLens = async (req, res) => {
   const lensId = new ObjectId(req.params.id);
-  const response = mongoDb
+  const response = await mongoDb
     .getDb()
     .db("photography_gear")
     .collection("lens")

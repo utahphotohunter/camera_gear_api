@@ -94,7 +94,7 @@ const updateCamera = async (req, res) => {
 // ==============================================
 const deleteCamera = async (req, res) => {
   const cameraId = new ObjectId(req.params.id);
-  const response = mongoDb
+  const response = await mongoDb
     .getDb()
     .db("photography_gear")
     .collection("camera")
