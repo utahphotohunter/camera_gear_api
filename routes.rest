@@ -23,3 +23,7 @@ content-type: application/json
     "battery": "long",
     "speed": "fast"
 }
+
+### DELETE camera
+DELETE {{url}}/68f47d79eee908520fe4c79d
+content-type: application/json
