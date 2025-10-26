@@ -407,6 +407,39 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "subject": {
+                  "example": "any"
+                },
+                "time": {
+                  "example": "any"
+                },
+                "mirrorless": {
+                  "example": "any"
+                },
+                "sensor": {
+                  "example": "any"
+                },
+                "environment": {
+                  "example": "any"
+                },
+                "duration": {
+                  "example": "any"
+                },
+                "speed": {
+                  "example": "any"
+                },
+                "view": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {

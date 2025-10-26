@@ -61,12 +61,19 @@ const insertSubject = async (req, res) => {
 // ==============================================
 const updateSubject = async (req, res) => {
   const subjectId = new ObjectId(req.params.id);
-  // const subject {
-  //   subject properties
-  // }
+  const subject = {
+    subject: req.body.subject,
+    time: req.body.time,
+    mirrorless: req.body.mirrorless,
+    sensor: req.body.sensor,
+    environment: req.body.environment,
+    duration: req.body.duration,
+    speed: req.body.speed,
+    view: req.body.view,
+  };
   const response = await mongoDb
     .getDb()
-    .db("photography-gear")
+    .db("photography_gear")
     .collection("subject")
     .replaceOne({ _id: subjectId }, subject);
   if (response.modifiedCount > 0) {
