@@ -23,7 +23,7 @@ const getById = async (req, res, next) => {
     .db("photography_gear")
     .collection("subject")
     .find({ _id: subjectId });
-  const subject = await result.toArray();
+  const subject = await result;
   res.setHeader("content_type", "application/json");
   res.status(200).json(subject[0]);
 };

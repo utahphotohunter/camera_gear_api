@@ -5,9 +5,10 @@ const doc = {
     title: "Camera Gear API",
     description: "API for choosing photography equipment.",
   },
-  // host: "localhost:5500",
-  host: "camera-gear-api.onrender.com",
-  schemes: ["https"],
+  host: "localhost:5500",
+  // host: "camera-gear-api.onrender.com",
+  schemes: ["http"],
+  // schemes: ["https"],
 };
 
 const outputFile = "./swagger.json";

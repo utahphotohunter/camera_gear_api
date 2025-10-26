@@ -5,10 +5,10 @@
     "description": "API for choosing photography equipment.",
     "version": "1.0.0"
   },
-  "host": "camera-gear-api.onrender.com",
+  "host": "localhost:5500",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/api-docs": {
