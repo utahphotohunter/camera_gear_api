@@ -8,6 +8,5 @@ const swagger = require("./swagger")
 router.use("/", swagger);
 router.use("/cameras", require("./cameras"));
 router.use("/lenses", require("./lenses"));
-router.use("/subjects", require("./subjects"));
 
 module.exports = router;
