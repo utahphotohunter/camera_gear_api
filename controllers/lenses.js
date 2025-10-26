@@ -104,6 +104,17 @@ const updateLens = async (req, res) => {
       zoom: req.body.zoom,
     };
     const result = await lensSchema.validateAsync(lens);
+    const testIfExists = mongoDb
+      .getDb()
+      .db("photography_gear")
+      .collection("lens")
+      .find({ _id: lensId });
+    const exists = await testIfExists.toArray();
+    if (!exists.length > 0) {
+      const error = new Error("No data found with that Id");
+      error.name = "no such id";
+      throw error;
+    }
     const response = await mongoDb
       .getDb()
       .db("photography_gear")
@@ -115,10 +126,12 @@ const updateLens = async (req, res) => {
   } catch (error) {
     if (error.isJoi) {
       res.status(422).json(error.message);
+    } else if ((error.name = "no such id")) {
+      res.status(404).json(error.message);
     } else {
       res.status(500);
       res.json(
-        error.message || "Some error occured while updating this camera."
+        error.message || "Some error occured while updating the lens."
       );
     }
   }
