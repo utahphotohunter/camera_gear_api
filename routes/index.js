@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const swagger = require("./swagger")
+const swagger = require("./swagger");
 
 //=========================================
 // routes
